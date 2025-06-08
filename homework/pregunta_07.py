@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+from homework.load_input import load_input 
 
 def pregunta_07():
     """
@@ -20,3 +21,10 @@ def pregunta_07():
     E    67
     Name: c2, dtype: int64
     """
+    sequence = load_input("files/input",0)
+    result = sequence.groupby("c1")["c2"].sum()
+    print(result)
+    return result
+
+if __name__ == "__main__":
+    pregunta_07()

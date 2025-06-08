@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+from homework.load_input import load_input 
 
 def pregunta_01():
     """
@@ -14,3 +15,9 @@ def pregunta_01():
     40
 
     """
+    sequence = load_input("files/input",0)
+    print(len(sequence))
+    return(len(sequence))
+
+if __name__ == "__main__":
+    pregunta_01()

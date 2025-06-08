@@ -5,6 +5,8 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+from homework.load_input import load_input 
+import pandas as pd
 
 def pregunta_13():
     """
@@ -20,3 +22,15 @@ def pregunta_13():
     E    275
     Name: c5b, dtype: int64
     """
+    sequence_0 = load_input("files/input",0)
+    sequence_2 = load_input("files/input",2)
+
+    tabla2 = sequence_2.groupby("c0")["c5b"].sum()
+
+    sequence = pd.merge(sequence_0,tabla2, on="c0")
+    result = sequence.groupby("c1")["c5b"].sum()
+    print(result)
+    return result
+
+if __name__ == "__main__":
+    pregunta_13()

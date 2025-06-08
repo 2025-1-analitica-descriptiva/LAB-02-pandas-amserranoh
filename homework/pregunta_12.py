@@ -4,7 +4,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 `tbl2.tsv`. En este laboratorio solo puede utilizar las funciones y 
 librerias de pandas para resolver las preguntas.
 """
-
+from homework.load_input import load_input 
 
 def pregunta_12():
     """
@@ -22,3 +22,12 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
+    sequence = load_input("files/input",2)
+    sequence["c5"] = sequence["c5a"].astype(str) + ":" + sequence["c5b"].astype(str)
+    sequence = sequence.groupby("c0")["c5"].agg(lambda x: ','.join(map(str, sorted(x))))
+    result = sequence.to_frame().reset_index()
+    print(result)
+    return result
+
+if __name__ == "__main__":
+    pregunta_12()
